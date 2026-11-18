@@ -61,9 +61,7 @@ export function Matrix({ colors, results, level, selected, onSelect }: Props) {
                       >
                         <span className="cell-aa">Aa</span>
                         <span className="cell-ratio">{(Math.floor(r.ratio * 10) / 10).toFixed(1)}</span>
-                        <span className={`badge badge-${r.rating.replace(' ', '-').toLowerCase()}`}>
-                          {r.rating === 'AA Large' ? 'AA18' : r.rating}
-                        </span>
+                
                       </button>
                     </td>
                   );

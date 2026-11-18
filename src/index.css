@@ -455,19 +455,7 @@ button:disabled {
   font-variant-numeric: tabular-nums;
 }
 
-.badge {
-  font: 700 10px/1 var(--font-body);
-  letter-spacing: 0.04em;
-  padding: 3px 5px;
-  border-radius: 4px;
-  background: rgb(255 255 255 / 0.92);
-  color: #17171c;
-}
 
-.badge-fail {
-  background: #b42318;
-  color: #fff;
-}
 
 /* ---------- Pair detail ---------- */
 

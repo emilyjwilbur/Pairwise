@@ -10,11 +10,12 @@ import { ExportPanel } from './components/ExportPanel';
 import { useCopy } from './hooks/useCopy';
 import type { Level, PairResult } from './types';
 
-const SAMPLE = `Navy: #1d3557
-Steel: #457b9d
-Sky: #a8dadc
-Cream: #f1faee
-Red: #e63946`;
+const SAMPLE = `Georgia Peach: #f4a261
+Red Clay: #b5452b
+Kudzu: #2f6b3a
+Sweet Tea: #c98a2e
+Dogwood: #faf3e8
+Night Train: #1b1f3b`;
 
 const BLACK: Swatch = { name: 'black', hex: '#000000' };
 const WHITE: Swatch = { name: 'white', hex: '#ffffff' };

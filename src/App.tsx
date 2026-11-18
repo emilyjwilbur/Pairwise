@@ -87,8 +87,7 @@ export default function App() {
           })}
         </h1>
         <p className="lede">
-          Paste a brand palette. See every text and background pairing that meets WCAG contrast, fix
-          the ones that don't, and export the result as code.
+        Find out which of your brand colors actually work as text.
         </p>
       </header>
 

@@ -169,9 +169,15 @@ export default function App() {
       </div>
 
       <footer className="footer">
-        Contrast ratios follow WCAG 2.2. Ratios are truncated, never rounded up, so a pair shown as
-        passing really passes.
-      </footer>
+  <p>
+    Made with <span aria-label="love" role="img">♥</span> in Atlanta, Georgia.
+    Design and development by{' '}
+    <a href="https://www.emilyjwilbur.com" target="_blank" rel="noopener">
+      Emily Wilbur
+    </a>
+    .
+  </p>
+</footer>
     </div>
   );
 }

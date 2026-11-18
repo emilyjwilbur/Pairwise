@@ -145,6 +145,16 @@ button:disabled {
   gap: 24px;
   min-width: 0;
 }
+.footer a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.footer a:hover {
+  text-decoration-thickness: 2px;
+}
 
 @media (max-width: 900px) {
   .layout {

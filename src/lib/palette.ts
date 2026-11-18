@@ -2,8 +2,13 @@ import { parseColor } from './color';
 
 export type Swatch = { name: string; hex: string };
 
-// Matches #hex, bare 6-digit hex, rgb()/rgba(), hsl()/hsla()
-const COLOR_RE = /#[0-9a-f]{3,8}\b|\b[0-9a-f]{6}\b|rgba?\([^)]*\)|hsla?\([^)]*\)/gi;
+// Matches #hex, rgb()/rgba(), hsl()/hsla()
+const COLOR_RE = /#[0-9a-f]{3,8}\b|rgba?\([^)]*\)|hsla?\([^)]*\)/gi;
+
+// Hex without a "#" only counts as a color when it's the whole value:
+// the entire line, or everything after a ":" or "=". Otherwise words
+// made of a–f letters, like "decade" or "facade", would match.
+const BARE_HEX_RE = /^(\s*(?:[^:=]*[:=]\s*)?["']?)([0-9a-f]{6})(["']?[;,]?\s*)$/i;
 
 export function slugify(s: string): string {
   return s
@@ -32,7 +37,9 @@ export function parsePalette(text: string): Swatch[] {
     return n === 1 ? base : `${base}-${n}`;
   };
 
-  for (const line of text.split(/\r?\n/)) {
+  for (const raw of text.split(/\r?\n/)) {
+    // Add the missing "#" to bare hex in the value position, then parse normally.
+    const line = raw.replace(BARE_HEX_RE, '$1#$2$3');
     const matches = [...line.matchAll(COLOR_RE)];
     const colors = matches
       .map((m) => parseColor(m[0]))

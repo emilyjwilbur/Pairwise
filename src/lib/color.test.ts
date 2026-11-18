@@ -53,6 +53,22 @@ describe('suggestFix', () => {
 });
 
 describe('parsePalette', () => {
+  it('does not mistake hex-like words for colors', () => {
+    expect(parsePalette('Facade beige: #f5f0e6')).toEqual([
+      { name: 'facade-beige', hex: '#f5f0e6' },
+    ]);
+    expect(parsePalette('Primary for the decade: #1d3557')).toEqual([
+      { name: 'primary-for-the-decade', hex: '#1d3557' },
+    ]);
+  });
+  
+  it('still accepts bare hex in the value position', () => {
+    expect(parsePalette('1d3557')).toEqual([{ name: 'color-1', hex: '#1d3557' }]);
+    expect(parsePalette('Facade beige: f5f0e6')).toEqual([
+      { name: 'facade-beige', hex: '#f5f0e6' },
+    ]);
+    expect(parsePalette('"navy": "1d3557",')).toEqual([{ name: 'navy', hex: '#1d3557' }]);
+  });
   it('reads names from many formats', () => {
     const text = [
       'Navy: #1d3557',
